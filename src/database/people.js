@@ -9,6 +9,13 @@ const getAllPeople = ()=> {
 
 const getPerson = (idPerson) => {
     const person = DB.people.find((person) => person.idPerson === idPerson);
+
+    if (!person) {
+        throw {
+            status: 404,
+            message: "No se encontró la persona solicitada"
+        }
+    }
     return person;
 };
 
@@ -52,11 +59,18 @@ const deletePerson = (idPerson) => {
     )
 
     if (indexForDelete === -1) {
-        return;
+        throw {
+            status: 404,
+            message: "No se encontró la persona solicitada"
+        }
     }
 
-    DB.people.splice(indexForDelete, 1);
-    saveToDatabase(DB);
+    try {
+        DB.people.splice(indexForDelete, 1);
+        saveToDatabase(DB);
+    } catch (error) {
+        throw { status: 500, error: error?.message || error};
+    }
 };
 
 module.exports = { getAllPeople, getPerson, createNewPerson, updatePerson, deletePerson};

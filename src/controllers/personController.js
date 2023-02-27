@@ -12,11 +12,16 @@ const getPerson =  (req, res) => {
     } = req;
 
     if (!idPerson) {
+        res.status(400).send({status: "FAILED", data: {error:"Parametros"}});
         return;
     }
+    try {
+        const person = personService.getPerson(idPerson);
+        res.send({status:"OK",body: person});
+    } catch (error) {
+        res.status(error?.status || 500).send({ status: "FAILED", data: { error: error || error}});
+    }
 
-    const person = personService.getPerson(idPerson);
-    res.send({status:"OK",body: person});
 }
 
 const createPerson =  (req, res) => {
@@ -28,7 +33,8 @@ const createPerson =  (req, res) => {
     !body.gender ||
     !body.age ||
     !body.profession){
-        res.status(400).send({status: "FAILED", data: {error: 'Campos faltantes'}})
+        res.status(400).send({status: "FAILED", data: {error: 'Campos faltantes'}});
+        return;
     }
 
     const newPerson = {
@@ -53,10 +59,16 @@ const updatePerson =  (req, res) => {
     } = req;
 
     if (!idPerson) {
-        res.status(400).send({status: "FAILED", data: {error:"Parametros"}})
+        res.status(400).send({status: "FAILED", data: {error:"Parametros"}});
+        return;
     }
-    const updatedPerson = personService.updatePerson(idPerson,body);
-    res.send({status: "OK", data: updatedPerson});
+
+    try {
+        const updatedPerson = personService.updatePerson(idPerson,body);
+        res.send({status: "OK", data: updatedPerson});
+    } catch (error) {
+        res.status(error?.status || 500).send({ status: "FAILED", data: { error: error || error}})
+    }
 }
 
 const deletePerson =  (req, res) => {
@@ -65,11 +77,16 @@ const deletePerson =  (req, res) => {
     } = req;
 
     if (!idPerson) {
+        res.status(400).send({status: "FAILED", data: {error:"Parametros"}});
         return;
     }
 
-    personService.deletePerson(idPerson);
-    res.status(204).send({ status: "OK"});
+    try {
+        personService.deletePerson(idPerson);
+        res.status(204).send({ status: "OK"});
+    } catch (error) {
+        res.status(error?.status || 500).send({ status: "FAILED", data: { error: error || error}})
+    }
 }
 
 module.exports = {

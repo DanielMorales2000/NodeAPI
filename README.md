@@ -176,6 +176,6 @@ http://localhost:3000/api/v1/people/idPerson
 
 #### Solicitud
 
-http://localhost:3000/api/v1/people/339542a2-4990-4599-b0e1-573040e84a57
+http://localhost:3000/api/v1/people/916542a2-4990-4599-b0e1-573040e84c40
 
 La respuesta en este caso es un *status 200*
