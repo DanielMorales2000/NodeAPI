@@ -13,6 +13,29 @@ Usar el comando *npm run dev*
 
 En los metodos que llevan *idPerson* como parametro se debe colocar el id de la persona a obtener, sin ningun extra (comillas, parentesis o corchetes).
 
+En los metodos para CREAR, ELIMINAR y ACTUALIZAR, se debe agregar a los encabezados el token generado en el servicio de autenticación, servicio que se describe a continuación.
+
+### Autenticación
+
+Usando el metodo *POST*, ejecutar la siguiente URL:
+http://localhost:3000/api/v1/people/auth
+
+y agregar el siguiente cuerpo en la petición:
+
+```json
+{
+    "userName":"root",
+    "password":"root"
+}
+```
+#### Respuesta
+
+```json
+{
+    "message": "Usuario autenticado",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpYXQiOjE2Nzc0ODczNjgsImV4cCI6MTY3NzQ4NzY2OH0.qntB913bvHslPl2uSmDu1wZ7YzocdUD-S_CG1kpnfug"
+}
+```
 ### Listar personas
 
 Usando el metodo *GET*, ejecutar la siguiente URL:

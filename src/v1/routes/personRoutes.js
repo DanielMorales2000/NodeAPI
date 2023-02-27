@@ -1,13 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const personController = require("../../controllers/personController")
+const personController = require("../../controllers/personController");
+const authController = require("../../controllers/authController");
+const authService = require("../../services/authService");
 
 router
+    .post("/auth",authController.authVerify)
     .get('/', personController.getAllPeople)
     .get('/:idPerson', personController.getPerson)
-    .post("/", personController.createPerson)
-    .patch("/:idPerson", personController.updatePerson)
-    .delete("/:idPerson", personController.deletePerson);
+    .post("/", authService.validateToken, personController.createPerson)
+    .patch("/:idPerson", authService.validateToken, personController.updatePerson)
+    .delete("/:idPerson", authService.validateToken, personController.deletePerson);
     
 module .exports = router;
 
