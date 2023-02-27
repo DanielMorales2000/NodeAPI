@@ -15,12 +15,18 @@ const getPerson = (idPerson) => {
 const createNewPerson = (newPerson) => {
     const isAlreadyAdded = DB.people.findIndex((person) => person.name === newPerson.name && person.lastName === newPerson.lastName)
     if (isAlreadyAdded != -1) {
-        return;
+        throw {
+            status: 400,
+            message: "Esta persona ya fue agregada"
+        }
     }
-
-    DB.people.push(newPerson);
-    saveToDatabase(DB);
-    return newPerson;
+    try {
+        DB.people.push(newPerson);
+        saveToDatabase(DB);
+        return newPerson;
+    } catch (error) {
+        throw { status: 500, error: error?.message || error};
+    }
 };
 
 const updatePerson = (idPerson, changes) => {

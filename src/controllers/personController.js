@@ -28,7 +28,7 @@ const createPerson =  (req, res) => {
     !body.gender ||
     !body.age ||
     !body.profession){
-        return;
+        res.status(400).send({status: "FAILED", data: {error: 'Campos faltantes'}})
     }
 
     const newPerson = {
@@ -38,8 +38,12 @@ const createPerson =  (req, res) => {
         age: body.age,
         profession: body.profession
     }
-    const createdPerson = personService.createPerson(newPerson);
-    res.status(201).send({status: "OK", data: createdPerson});
+    try {
+        const createdPerson = personService.createPerson(newPerson);
+        res.status(201).send({status: "OK", data: createdPerson});
+    } catch (error) {
+        res.status(error?.status || 500).send({ status: "FAILED", data: { error: error || error}})
+    }
 }
 
 const updatePerson =  (req, res) => {
@@ -49,7 +53,7 @@ const updatePerson =  (req, res) => {
     } = req;
 
     if (!idPerson) {
-        return;
+        res.status(400).send({status: "FAILED", data: {error:"Parametros"}})
     }
     const updatedPerson = personService.updatePerson(idPerson,body);
     res.send({status: "OK", data: updatedPerson});
