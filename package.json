@@ -1,11 +1,11 @@
 {
   "name": "nodeapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "Prueba tecnica para TIUI",
   "main": "index.js",
   "scripts": {
-    "start":"node ./src/index.js",
-    "dev":"nodeapi ./src/index.js",
+    "start": "node ./src/index.js",
+    "dev": "node ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,6 +15,7 @@
     "nodeapi": "^0.0.1"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "uuid": "^9.0.0"
   }
 }
