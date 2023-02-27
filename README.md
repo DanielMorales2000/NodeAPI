@@ -11,7 +11,7 @@ Usar el comando *npm run dev*
 
 ## Uso de API REST
 
-En los metodos que llevan*idPerson* como paremtro se debe colocar el id de la persona a obtener, sin ningun extra (comillas, parentesis o corchetes).
+En los metodos que llevan *idPerson* como parametro se debe colocar el id de la persona a obtener, sin ningun extra (comillas, parentesis o corchetes).
 
 ### Listar personas
 
@@ -30,6 +30,7 @@ http://localhost:3000/api/v1/people
 
 En el cuerpo se debe colocar un JSON como el del ejemplo siguiente:
 
+```json
 {
 "name": "Maria Camila",
 "lastName": "Rosales Mora",
@@ -37,6 +38,7 @@ En el cuerpo se debe colocar un JSON como el del ejemplo siguiente:
 "age": "25",
 "profession": "Administradora"
 }
+```
 
 ### Actualizar una persona
 
@@ -45,6 +47,7 @@ http://localhost:3000/api/v1/people/idPerson
 
 En el cuerpo se debe colocar un JSON como el del ejemplo siguiente:
 
+```json
 {
 "name": "Maria Camila",
 "lastName": "Rosales Mora",
@@ -52,6 +55,7 @@ En el cuerpo se debe colocar un JSON como el del ejemplo siguiente:
 "age": "25",
 "profession": "Administradora"
 }
+```
 
 Los campos que no se deseen actualizar se pueden omitir, quedando por ejemplo:
 
