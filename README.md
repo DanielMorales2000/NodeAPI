@@ -18,10 +18,72 @@ En los metodos que llevan *idPerson* como parametro se debe colocar el id de la 
 Usando el metodo *GET*, ejecutar la siguiente URL:
 http://localhost:3000/api/v1/people
 
+#### Respuesta
+``` json
+{
+"status": "OK",
+"data": [
+{
+"idPerson": "1",
+"name": "Yerson Daniel",
+"lastName": "Morales Arevalo",
+"gender": "Masculino",
+"Age": "22",
+"profession": "Ingeniero de Sistemas",
+"creationDate": "2023-02-24"
+},
+{
+"idPerson": "485542a2-4990-4599-b0e1-573040e84a69",
+"name": "Carlos Andrés",
+"lastName": "Rosales Rodríguez",
+"gender": "Masculino",
+"Age": "30",
+"profession": "Contador",
+"creationDate": "2023-02-25"
+},
+{
+"idPerson": "783542a2-4990-4599-b0e1-573040e84b49",
+"name": "Karen Dahiana",
+"lastName": "Quintero Medina",
+"gender": "Femenino",
+"Age": "21",
+"profession": "Diseñadora",
+"creationDate": "2023-02-26"
+},
+{
+"idPerson": "916542a2-4990-4599-b0e1-573040e84c40",
+"name": "Mariana",
+"lastName": "Gomez Gonzales",
+"gender": "Femenino",
+"Age": "27",
+"profession": "Streamer",
+"creationDate": "2023-02-23"
+}
+]
+}
+```
 ### Obtener una persona
 
 Usando el metodo *GET*, ejecutar la siguiente URL:
 http://localhost:3000/api/v1/people/idPerson
+
+#### Respuesta
+http://localhost:3000/api/v1/people/916542a2-4990-4599-b0e1-573040e84c40
+
+``` json
+{
+    "status": "OK",
+    "data": {
+        "idPerson": "916542a2-4990-4599-b0e1-573040e84c40",
+        "name": "Maria Alejandra",
+        "lastName": "Gomez Gonzales",
+        "gender": "Femenino",
+        "Age": "27",
+        "profession": "Streamer",
+        "creationDate": "2023-02-23"
+    }
+}
+```
 
 ### Crear una persona
 
@@ -39,10 +101,26 @@ En el cuerpo se debe colocar un JSON como el del ejemplo siguiente:
 "profession": "Administradora"
 }
 ```
+##### Respuesta
+
+```json
+{
+    "status": "OK",
+    "data": {
+        "name": "Maria Camila",
+        "lastName": "Rosales Mora",
+        "gender": "Femenino",
+        "age": "25",
+        "profession": "Administradora",
+        "idPerson": "bee169cc-46db-436d-b41f-e1281a57e3bf",
+        "creationDate": "2/27/2023, 5:18:49 AM"
+    }
+}
+```
 
 ### Actualizar una persona
 
-Usando el metodo *POST*, ejecutar la siguiente URL:
+Usando el metodo *PATCH*, ejecutar la siguiente URL:
 http://localhost:3000/api/v1/people/idPerson
 
 En el cuerpo se debe colocar un JSON como el del ejemplo siguiente:
@@ -59,11 +137,45 @@ En el cuerpo se debe colocar un JSON como el del ejemplo siguiente:
 
 Los campos que no se deseen actualizar se pueden omitir, quedando por ejemplo:
 
+```json
 {
 "name": "Dayana Alejandra"
 }
+```
+#### Ejemplo
+
+##### Solicitud
+http://localhost:3000/api/v1/people/916542a2-4990-4599-b0e1-573040e84c40
+
+Body:
+``` json
+{
+"name": "Dayana Alejandra"
+}
+```
+##### Respuesta
+``` json
+{
+    "status": "OK",
+    "data": {
+        "idPerson": "916542a2-4990-4599-b0e1-573040e84c40",
+        "name": "Dayana Alejandra",
+        "lastName": "Gomez Gonzales",
+        "gender": "Femenino",
+        "Age": "27",
+        "profession": "Streamer",
+        "creationDate": "2023-02-23"
+    }
+}
+```
 
 ### Eliminar una persona
 
 Usando el metodo *DELETE*, ejecutar la siguiente URL:
 http://localhost:3000/api/v1/people/idPerson
+
+#### Solicitud
+
+http://localhost:3000/api/v1/people/339542a2-4990-4599-b0e1-573040e84a57
+
+La respuesta en este caso es un *status 200*

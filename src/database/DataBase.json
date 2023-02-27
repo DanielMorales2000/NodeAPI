@@ -29,12 +29,21 @@
     },
     {
       "idPerson": "916542a2-4990-4599-b0e1-573040e84c40",
-      "name": "Mariana",
+      "name": "Maria Alejandra",
       "lastName": "Gomez Gonzales",
       "gender": "Femenino",
       "Age": "27",
       "profession": "Streamer",
       "creationDate": "2023-02-23"
+    },
+    {
+      "name": "Maria Camila",
+      "lastName": "Rosales Mora",
+      "gender": "Femenino",
+      "age": "25",
+      "profession": "Administradora",
+      "idPerson": "bee169cc-46db-436d-b41f-e1281a57e3bf",
+      "creationDate": "2/27/2023, 5:18:49 AM"
     }
   ]
 }
