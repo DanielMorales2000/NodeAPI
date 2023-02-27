@@ -201,4 +201,4 @@ http://localhost:3000/api/v1/people/idPerson
 
 http://localhost:3000/api/v1/people/916542a2-4990-4599-b0e1-573040e84c40
 
-La respuesta en este caso es un *status 200*
+La respuesta en este caso es un *status 204*
